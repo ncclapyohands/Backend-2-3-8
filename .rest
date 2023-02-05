@@ -1,0 +1,30 @@
+// getAll
+GET http://localhost:2665/clients/63df2503c0bae6a2586f0a31
+###
+// getOne id: 63c34e2206d7ff9ddc29bbfd
+POST http://localhost:2665/clients
+Content-Type: application/json
+
+{
+        "firstName": "Kenzie",
+        "lastName": "Hart",
+        "email": "kenzieiscool@gmail.com",
+        "phone": "20823232323"
+}
+###
+
+// getAll
+GET http://localhost:2665/schools/63df251ac0bae6a2586f0a32
+
+###
+// getOne id: 63c34e2206d7ff9ddc29bbfd
+POST http://localhost:2665/schools
+Content-Type: application/json
+
+{
+        "firstName": "Chad",
+      "lastName": "Barks",
+      "email": "homiebarks@gmail.com",
+      "phone": "Call Me Baby",
+      "businessId": "121124342432"
+}

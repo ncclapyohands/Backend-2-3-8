@@ -16,7 +16,11 @@ const mongodb = require('../db');
 const getOneClient = async (req, res) => {
   try {
     const clientId = new ObjectId(req.params.id);
-    const result = await mongodb.getDb().db().collection('clients').find({ _id: clientId });
+    const result = await mongodb
+      .getDb()
+      .db('replay-live')
+      .collection('clients')
+      .find({ _id: clientId });
     result.toArray().then((lists) => {
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(lists[0]);
@@ -28,14 +32,20 @@ const getOneClient = async (req, res) => {
 
 const addClient = async (req, res) => {
   try {
+    console.log('1');
     const newClient = {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
-      phone: req.body.phone
+      phone: req.body.phone,
+      businessId: req.body.businessId
     };
-    const result = await mongodb.getDb().db().collection('clients').insertOne(newClient);
-
+    const result = await mongodb
+      .getDb()
+      .db('replay-live')
+      .collection('clients')
+      .insertOne(newClient);
+    console.log('3');
     if (result.acknowledged) {
       res.status(201).json({
         message: 'Post was successful',
@@ -47,65 +57,70 @@ const addClient = async (req, res) => {
         message: 'Result Failed',
         body: result
       });
+      console.log('4');
     }
   } catch (err) {
     res.status(500).json(err);
   }
 };
 
-// const updateContact = async (req, res) => {
-//   try {
-//     const userId = new ObjectId(req.params.id);
-//     const newUser = {
-//       firstName: req.body.firstName,
-//       lastName: req.body.lastName,
-//       email: req.body.email,
-//       favoriteColor: req.body.favoriteColor,
-//       birthday: req.body.birthday
-//     };
-//     const result = await mongodb
-//       .getDb()
-//       .db()
-//       .collection('contacts')
-//       .replaceOne({ _id: userId }, newUser);
-//     console.log(result);
-//     if (result.modifiedCount > 0) {
-//       res.status(201).json({
-//         message: 'Post was successful',
-//         // eslint-disable-next-line no-undef
-//         body: result
-//       });
-//     } else {
-//       res.status(500).json({
-//         message: 'Result Failed',
-//         body: result
-//       });
-//     }
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// };
+const updateClient = async (req, res) => {
+  try {
+    const userId = new ObjectId(req.params.id);
+    const updateClient = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      phone: req.body.phone,
+      businessId: req.body.businessId
+    };
+    const result = await mongodb
+      .getDb()
+      .db('replay-live')
+      .collection('clients')
+      .replaceOne({ _id: userId }, updateClient);
+    console.log(result);
+    if (result.modifiedCount > 0) {
+      res.status(201).json({
+        message: 'Post was successful',
+        // eslint-disable-next-line no-undef
+        body: result
+      });
+    } else {
+      res.status(500).json({
+        message: 'Result Failed',
+        body: result
+      });
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
 
-// const deleteContact = async (req, res) => {
-//   try {
-//     const userId = new ObjectId(req.params.id);
-//     const result = await mongodb.getDb().db().collection('contacts').remove({ _id: userId }, true);
-//     console.log(result);
-//     if (result.deletedCount > 0) {
-//       res.status(201).json({
-//         message: 'Post was successful',
-//         // eslint-disable-next-line no-undef
-//         body: result
-//       });
-//     } else {
-//       res.status(500).json({
-//         message: 'Result Failed',
-//         body: result
-//       });
-//     }
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// };
+const deleteClient = async (req, res) => {
+  try {
+    const userId = new ObjectId(req.params.id);
+    const result = await mongodb
+      .getDb()
+      .db('replay-live')
+      .collection('clients')
+      .remove({ _id: userId }, true);
+    console.log(result);
+    if (result.deletedCount > 0) {
+      res.status(201).json({
+        message: 'Post was successful',
+        // eslint-disable-next-line no-undef
+        body: result
+      });
+    } else {
+      res.status(500).json({
+        message: 'Result Failed',
+        body: result
+      });
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
 
-module.exports = { addClient, getOneClient };
+module.exports = { addClient, getOneClient, updateClient, deleteClient };

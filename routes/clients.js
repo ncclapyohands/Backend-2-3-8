@@ -9,8 +9,8 @@ router.post('/', client.addClient);
 
 router.get('/:id', client.getOneClient);
 
-// router.put('/:id', clients.updateClient);
+router.put('/:id', client.updateClient);
 
-// router.delete('/:id', clients.deleteContact);
+router.delete('/:id', client.deleteClient);
 
 module.exports = router;

@@ -4,15 +4,10 @@ const router = express.Router();
 const schools = require('../controllers/schools');
 
 // GET /feed/posts
-// router.get('/', schools.getAll);
 
-// // router.get('/:id', schools.getOne);
+router.put('/:id', schools.updateSchool);
 
-// router.post('/', schools.addContact);
-
-// router.put('/:id', schools.updateContact);
-
-// router.delete('/:id', schools.deleteContact);
+router.delete('/:id', schools.deleteSchool);
 
 router.post('/', schools.addSchool);
 

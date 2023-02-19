@@ -1,4 +1,5 @@
 const express = require('express');
+const { requiresAuth } = require('express-openid-connect');
 const router = express.Router();
 
 const client = require('../controllers/clients');
@@ -7,10 +8,10 @@ const client = require('../controllers/clients');
 // router.get('/', clients.get);
 router.post('/', client.addClient);
 
-router.get('/:id', client.getOneClient);
+router.get('/:id', requiresAuth(), client.getOneClient);
 
-router.put('/:id', client.updateClient);
+router.put('/:id', requiresAuth(), client.updateClient);
 
-router.delete('/:id', client.deleteClient);
+router.delete('/:id', requiresAuth(), client.deleteClient);
 
 module.exports = router;

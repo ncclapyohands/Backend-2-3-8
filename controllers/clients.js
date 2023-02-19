@@ -38,6 +38,8 @@ const addClient = async (req, res) => {
       lastName: req.body.lastName,
       email: req.body.email,
       phone: req.body.phone,
+      businessName: req.body.businessName,
+      zip: req.body.zip,
       businessId: req.body.businessId
     };
     const result = await mongodb
@@ -72,6 +74,8 @@ const updateClient = async (req, res) => {
       lastName: req.body.lastName,
       email: req.body.email,
       phone: req.body.phone,
+      businessName: req.body.businessName,
+      zip: req.body.zip,
       businessId: req.body.businessId
     };
     const result = await mongodb

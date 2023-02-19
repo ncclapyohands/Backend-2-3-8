@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.use('/schools', require('./schools'));
 router.use('/clients', require('./clients'));
+
 router.use('/api-docs', swaggerUi.serve);
 router.get('/api-docs', swaggerUi.setup(swaggerDocument));
 

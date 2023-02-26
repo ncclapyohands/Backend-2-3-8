@@ -5,11 +5,9 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "localhost:2665",
+  "host": "replay-live-web.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "http"
-  ],
+  "schemes": ["https"],
   "paths": {
     "/": {
       "get": {
@@ -91,9 +89,7 @@
       },
       "get": {
         "description": "",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -193,9 +189,7 @@
     "/clients/{id}": {
       "get": {
         "description": "",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",

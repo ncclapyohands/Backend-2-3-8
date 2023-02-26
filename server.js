@@ -23,8 +23,8 @@ app.use(auth(config));
 app.get('/', (req, res) => {
   res.send(
     req.oidc.isAuthenticated()
-      ? 'Logged in <button href="http://localhost:2665/logout">Log Out</button>'
-      : 'Logged out <button href="http://localhost:2665/login">Log in</button>'
+      ? 'Logged in <a class="login" href="http://localhost:2665/logout">Log Out</a>'
+      : 'Logged out <a class="login" href="http://localhost:2665/login">Log in</a>'
   );
 });
 

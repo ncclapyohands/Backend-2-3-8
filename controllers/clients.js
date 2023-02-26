@@ -26,7 +26,7 @@ const getOneClient = async (req, res) => {
       res.status(200).json(lists[0]);
     });
   } catch (err) {
-    response.status(500).json(err);
+    res.status(500).json(err);
   }
 };
 

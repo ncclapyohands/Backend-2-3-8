@@ -29,6 +29,7 @@
     },
     "/schools/{id}": {
       "put": {
+        "tags": ["schools"],
         "description": "",
         "parameters": [
           {
@@ -69,6 +70,7 @@
         }
       },
       "delete": {
+        "tags": ["schools"],
         "description": "",
         "parameters": [
           {
@@ -88,6 +90,7 @@
         }
       },
       "get": {
+        "tags": ["schools"],
         "description": "",
         "produces": ["application/json"],
         "parameters": [
@@ -107,6 +110,7 @@
     },
     "/schools/": {
       "post": {
+        "tags": ["schools"],
         "description": "",
         "parameters": [
           {
@@ -146,6 +150,7 @@
     },
     "/clients/": {
       "post": {
+        "tags": ["clients"],
         "description": "",
         "parameters": [
           {
@@ -188,6 +193,7 @@
     },
     "/clients/{id}": {
       "get": {
+        "tags": ["clients"],
         "description": "",
         "produces": ["application/json"],
         "parameters": [
@@ -205,6 +211,7 @@
         }
       },
       "put": {
+        "tags": ["clients"],
         "description": "",
         "parameters": [
           {
@@ -248,6 +255,7 @@
         }
       },
       "delete": {
+        "tags": ["clients"],
         "description": "",
         "parameters": [
           {

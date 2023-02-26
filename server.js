@@ -10,9 +10,9 @@ const app = express();
 const config = {
   authRequired: false,
   auth0Logout: true,
-  secret: 'a long, randomly-generated string stored in env',
-  baseURL: 'http://localhost:2665',
-  clientID: '1tpbWAnoLpSq1YyCOu8gWPaFfbSrNEMb',
+  secret: process.env.SECRET,
+  baseURL: process.env.BASE_URL,
+  clientID: process.env.CLIENT_ID,
   issuerBaseURL: 'https://dev-7h7o4fiu50eyp8xu.us.auth0.com'
 };
 
@@ -23,8 +23,8 @@ app.use(auth(config));
 app.get('/', (req, res) => {
   res.send(
     req.oidc.isAuthenticated()
-      ? 'Logged in <a class="login" href="http://localhost:2665/logout">Log Out</a>'
-      : 'Logged out <a class="login" href="http://localhost:2665/login">Log in</a>'
+      ? `Logged in <a class="login" href="${process.env.BASE_URL}/logout">Log Out</a>`
+      : `Logged out <a class="login" href="${process.env.BASE_URL}/login">Log in</a>`
   );
 });
 
